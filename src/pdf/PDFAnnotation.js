@@ -5,7 +5,7 @@ export const extendTarget = (annotation, source, page) => {
   const isRelationAnnotation = Array.isArray(annotation.target);
 
   // Adds 'page' field to selector (unless it's a TextQuoteSelector)
-  const extendSelector = selector => selector.type === 'TextQuoteSelector' ? 
+  const extendSelector = selector => selector.type === 'TextQuoteSelector' ?
     selector : { ...selector, page };
 
   if (isRelationAnnotation) {
@@ -17,7 +17,7 @@ export const extendTarget = (annotation, source, page) => {
       }))
     };
   } else {
-    return Array.isArray(annotation.target.selector) ? 
+    return Array.isArray(annotation.target.selector) ?
       {
         ...annotation,
         target: {
@@ -32,31 +32,31 @@ export const extendTarget = (annotation, source, page) => {
         }
       }
   }
-    
+
 }
 
 /** Splits annotations by type, text or image **/
-export const splitByType = annotations => {
+export const splitByType = async (annotations) => {
   let text = [];
   let image = [];
+  if (annotations) {
+    await annotations.forEach(a => {
+      if (a.target.selector) {
+        const selectors = Array.isArray(a.target.selector) ?
+          a.target.selector : [a.target.selector];
 
-  annotations.forEach(a => {
-    if (a.target.selector) {
-      const selectors = Array.isArray(a.target.selector) ?
-        a.target.selector : [ a.target.selector ];
-      
-      const hasImageSelector =
-        selectors.find(s => s.type === 'FragmentSelector' || s.type === 'SvgSelector');
+        const hasImageSelector =
+          selectors.find(s => s.type === 'FragmentSelector' || s.type === 'SvgSelector');
 
-      if (hasImageSelector)
-        image.push(a);
-      else
+        if (hasImageSelector)
+          image.push(a);
+        else
+          text.push(a);
+      } else {
+        // Relationship
         text.push(a);
-    } else {
-      // Relationship
-      text.push(a);
-    }
-  });
-
+      }
+    });
+  }
   return { text, image };
 }

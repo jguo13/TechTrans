@@ -2,24 +2,36 @@ import React, { useEffect, useRef, useState } from 'react';
 import * as PDFJS from 'pdfjs-dist/legacy/build/pdf';
 import { Recogito } from '@recogito/recogito-js/src';
 import { Annotorious } from '@recogito/annotorious/src';
-
+import { onAuthStateChanged } from 'firebase/auth';
 import { extendTarget, splitByType } from '../PDFAnnotation';
+import { auth } from "../../services/firebase.config.js";
+import { userEmail } from "../../App.js"
+import { useAuthState } from 'react-firebase-hooks/auth';
+
+
+
+
 
 const AnnotatablePage = props => {
 
+  // }
+
   const containerEl = useRef();
 
-  const [ pageVisible, setPageVisible ] = useState(false)
-  const [ isRendered, setRendered ] = useState(false);
+  const [pageVisible, setPageVisible] = useState(false)
+  const [isRendered, setRendered] = useState(false);
 
-  const [ anno, setAnno ] = useState();
+  const [anno, setAnno] = useState();
 
-  const [ recogito, setRecogito ] = useState();
+  const [recogito, setRecogito] = useState();
 
   // Renders the PDF page, returning a promise
   const renderPage = () => {
+
+
+
     console.log('Rendering page ' + props.page);
-    
+
     props.pdf.getPage(props.page).then(page => {
       const scale = props.scale || 1.8;
       const viewport = page.getViewport({ scale });
@@ -31,7 +43,7 @@ const AnnotatablePage = props => {
 
       canvas.height = viewport.height;
       canvas.width = viewport.width;
-      
+
       containerEl.current.appendChild(canvas);
 
       const renderContext = {
@@ -79,12 +91,12 @@ const AnnotatablePage = props => {
       } else if (props.annotationMode === 'ANNOTATION') {
         if (imageLayer)
           imageLayer.style.pointerEvents = null;
-        
-          recogito.setMode('ANNOTATION');
+
+        recogito.setMode('ANNOTATION');
       } else if (props.annotationMode === 'RELATIONS') {
         if (imageLayer)
           imageLayer.style.pointerEvents = null;
-        
+
         recogito.setMode('RELATIONS');
       }
     }
@@ -97,17 +109,17 @@ const AnnotatablePage = props => {
 
     const { text, image } = splitByType(props.store.getAnnotations(props.page));
 
-    const r = new Recogito({ 
+    const r = new Recogito({
       ...config,
-      content: containerEl.current.querySelector('.textLayer'), 
-      mode: 'pre' 
+      content: containerEl.current.querySelector('.textLayer'),
+      mode: 'pre'
     });
 
     // Init Recogito Connections plugin
     props.connections.register(r);
 
     props.connections.on('createConnection', onCreateAnnotation);
-    props.connections.on('updateConnection', onUpdateAnnotation);  
+    props.connections.on('updateConnection', onUpdateAnnotation);
     props.connections.on('deleteConnection', onDeleteAnnotation);
 
     r.on('createAnnotation', onCreateAnnotation);
@@ -115,6 +127,21 @@ const AnnotatablePage = props => {
     r.on('deleteAnnotation', onDeleteAnnotation);
     r.on('cancelSelected', a => props.onCancelSelected(a));
     setRecogito(r);
+
+
+    r.setAuthInfo({
+
+      id: 'http://recogito.example.com/rainer',
+      displayName: "anonymous"
+    });
+
+
+
+
+
+    //   // Clean up the listener when the component unmounts
+    //   return () => unsubscribe();
+    // }, [auth]);
 
     const anno = new Annotorious({
       ...config,
@@ -125,11 +152,15 @@ const AnnotatablePage = props => {
     anno.on('updateAnnotation', onUpdateAnnotation);
     anno.on('deleteAnnotation', onDeleteAnnotation);
     anno.on('cancelSelected', a => props.onCancelSelected(a));
-    
+
     setAnno(anno);
 
     r.on('selectAnnotation', () => anno.selectAnnotation());
     anno.on('selectAnnotation', () => r.selectAnnotation());
+    anno.setAuthInfo({
+      id: 'http://recogito.example.com/rainer',
+      displayName: null,
+    });
 
     // For some reason, React is not done initializing the Image-/TextAnnotators.
     // This remains an unsolved mystery for now. The hack is to introduce a little
@@ -137,8 +168,8 @@ const AnnotatablePage = props => {
     const init = () => {
       if (r._app.current && anno._app.current) {
         r.setAnnotations(text);
-        anno.setAnnotations(image);   
-        setMode(r);   
+        anno.setAnnotations(image);
+        setMode(r);
       } else {
         setTimeout(() => init(), 50);
       }
@@ -180,28 +211,36 @@ const AnnotatablePage = props => {
     if (props.page === 1)
       renderPage();
 
-    return () => 
+    return () =>
       observer.unobserve(target);
   }, []);
 
+
+
+
+
+
+
+
   useEffect(() => {
+
     if (isRendered) {
-      if (pageVisible) 
+      if (pageVisible)
         initAnnotationLayer();
-      else 
+      else
         destroyAnnotationLayer();
     } else if (pageVisible && props.page > 1) {
       renderPage();
     }
-  }, [ isRendered, pageVisible ]);
+  }, [isRendered, pageVisible]);
 
   useEffect(() => {
     setMode(recogito);
-  }, [ props.annotationMode ])
+  }, [props.annotationMode])
 
   return (
     <div
-      ref={containerEl} 
+      ref={containerEl}
       className={props.debug ? 'page-container debug' : 'page-container'}>
       <div className="textLayer" />
     </div>

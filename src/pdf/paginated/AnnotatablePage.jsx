@@ -9,9 +9,9 @@ const AnnotatablePage = props => {
 
   const containerEl = useRef();
 
-  const [ anno, setAnno ] = useState();
+  const [anno, setAnno] = useState();
 
-  const [ recogito, setRecogito ] = useState();
+  const [recogito, setRecogito] = useState();
 
   // Cleanup previous Recogito instance, canvas + text layer
   const destroyPreviousPage = () => {
@@ -58,14 +58,14 @@ const AnnotatablePage = props => {
       }).promise.then(() => {
         const config = props.config || {};
 
-        const { text, image } = splitByType(props.annotations);
+        const { text, image } = (props.annotations);
 
-        const r = new Recogito({ 
+        const r = new Recogito({
           ...config,
-          content: containerEl.current.querySelector('.textLayer'), 
-          mode: 'pre' 
+          content: containerEl.current.querySelector('.textLayer'),
+          mode: 'pre'
         });
-        
+
         r.on('createAnnotation', a => props.onCreateAnnotation(a));
         r.on('updateAnnotation', (a, p) => props.onUpdateAnnotation(a, p));
         r.on('deleteAnnotation', a => props.onDeleteAnnotation(a));
@@ -74,7 +74,7 @@ const AnnotatablePage = props => {
         // TODO split: text annotations only
         r.setAnnotations(text);
         setRecogito(r);
-        
+
         const anno = new Annotorious({
           ...config,
           image: canvas
@@ -92,19 +92,19 @@ const AnnotatablePage = props => {
         anno.on('selectAnnotation', () => r.selectAnnotation());
       }));
     }
-  }, [ props.page ]);
+  }, [props.page]);
 
   useEffect(() => {
     // Hack
     if (recogito && recogito.getAnnotations() === 0) {
       recogito.setAnnotations(props.annotations);
     }
-  }, [ props.annotations ]);
+  }, [props.annotations]);
 
   useEffect(() => {
     if (containerEl.current) {
       const imageLayer = containerEl.current.querySelector('svg.a9s-annotationlayer');
-      
+
       if (imageLayer) {
         if (props.annotationMode === 'IMAGE') {
           imageLayer.style.pointerEvents = 'auto';
@@ -114,11 +114,11 @@ const AnnotatablePage = props => {
         }
       }
     }
-  }, [ props.annotationMode ])
+  }, [props.annotationMode])
 
   return (
     <div
-      ref={containerEl} 
+      ref={containerEl}
       className={props.debug ? 'page-container debug' : 'page-container'}>
       <div className="textLayer" />
     </div>

@@ -7,11 +7,11 @@ import { extendTarget } from '../PDFAnnotation';
 
 const PaginatedViewer = props => {
 
-  const [ page, setPage ] = useState();
+  const [page, setPage] = useState();
 
-  const [ debug, setDebug ] = useState(false);
+  const [debug, setDebug] = useState(false);
 
-  const [ annotationMode, setAnnotationMode ] = useState('ANNOTATION');
+  const [annotationMode, setAnnotationMode] = useState('ANNOTATION');
 
   // Render first page on mount
   useEffect(() => {
@@ -37,7 +37,7 @@ const PaginatedViewer = props => {
     if (annotationMode === 'RELATIONS')
       setAnnotationMode('ANNOTATION');
     else
-      setAnnotationMode('RELATIONS'); 
+      setAnnotationMode('RELATIONS');
   }
 
   const onToggleImageMode = () => {
@@ -57,12 +57,12 @@ const PaginatedViewer = props => {
     const previous = extendTarget(p, props.url, page.pageNumber);
     props.onUpdateAnnotation && props.onUpdateAnnotation(updated, previous);
   }
-    
+
   const onDeleteAnnotation = a => {
     const extended = extendTarget(a, props.url, page.pageNumber);
     props.onDeleteAnnotation && props.onDeleteAnnotation(extended);
   }
-  
+
   return (
     <div>
       <header>
@@ -79,15 +79,15 @@ const PaginatedViewer = props => {
         </button>
 
         <label>{page?.pageNumber} / {props.pdf.numPages}</label>
-        
+
         <button onClick={onNextPage}>
           <span className="inner">
             <CgChevronRight />
           </span>
         </button>
 
-        <button 
-          className={annotationMode === 'RELATIONS' ? 'active' : null} 
+        <button
+          className={annotationMode === 'RELATIONS' ? 'active' : null}
           onClick={onToggleRelationsMode}>
           <span className="inner">
             <CgArrowsExpandDownRight />
@@ -95,7 +95,7 @@ const PaginatedViewer = props => {
         </button>
 
         <button
-          className={annotationMode === 'IMAGE' ? 'active' : null} 
+          className={annotationMode === 'IMAGE' ? 'active' : null}
           onClick={onToggleImageMode}>
           <span className="inner">
             <RiImageEditFill />
@@ -105,15 +105,15 @@ const PaginatedViewer = props => {
 
       <main>
         <div className="pdf-viewer-container">
-          <AnnotatablePage 
-            page={page} 
+          <AnnotatablePage
+            page={page}
             annotations={page ? props.store.getAnnotations(page.pageNumber) : []}
             config={props.config}
-            debug={debug} 
-            annotationMode={annotationMode} 
+            debug={debug}
+            annotationMode={annotationMode}
             onCreateAnnotation={onCreateAnnotation}
             onUpdateAnnotation={onUpdateAnnotation}
-            onDeleteAnnotation={onDeleteAnnotation} 
+            onDeleteAnnotation={onDeleteAnnotation}
             onCancelSelected={props.onCancelSelected} />
         </div>
       </main>
