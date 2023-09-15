@@ -39,6 +39,21 @@ export const extendTarget = (annotation, source, page) => {
 export const splitByType = async (annotations) => {
   let text = [];
   let image = [];
+  // const myPromise = annotations;
+  // myPromise.then(result => {
+  //   const m1 = "this is annotaitons in split by type: " + annotations;
+  //   console.log(m1);
+  // });
+
+
+  // return new Promise((resolve, reject) => {
+  //   // Perform some asynchronous operation here, and then resolve or reject the Promise
+  //   // For demonstration purposes, we'll resolve it immediately
+  //   const m1 = "this is annotations in split by type: " + annotations;
+  //   console.log(m1);
+  //   resolve();
+  // });
+
   if (annotations) {
     await annotations.forEach(a => {
       if (a.target.selector) {

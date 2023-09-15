@@ -19,9 +19,9 @@ module.exports = {
   },
   module: {
     rules: [
-      { 
-        test: /\.(js|jsx)$/, 
-        use: { 
+      {
+        test: /\.(js|jsx)$/,
+        use: {
           loader: 'babel-loader',
           options: {
             "presets": [
@@ -36,9 +36,10 @@ module.exports = {
           }
         }
       },
-      { test: /\.css$/,  use: [ 'style-loader', 'css-loader'] },
-      { test: /\.scss$/, use: [ 'style-loader', 'css-loader', 'sass-loader' ] },
-      { test: /\.(png|jpg|gif)$/,
+      { test: /\.css$/, use: ['style-loader', 'css-loader'] },
+      { test: /\.scss$/, use: ['style-loader', 'css-loader', 'sass-loader'] },
+      {
+        test: /\.(png|jpg|gif)$/,
         use: [
           {
             loader: 'file-loader',

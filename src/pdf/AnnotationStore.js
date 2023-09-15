@@ -90,6 +90,7 @@ export default class AnnotationStore {
   async getAnnotations(pageNumber) {
 
     try {
+
       // Reference to the "annotations" collection
       const annotationsCollection = await collection(db, 'annotations');
       console.log(pageNumber);
@@ -124,11 +125,9 @@ export default class AnnotationStore {
           const to = a.target[1].id;
           return ids.has(from) || ids.has(to);
         });
-
+      const m2 = "this is the annotationsOnPage: " + annotationsOnPage;
       return [...annotationsOnPage, ...linkedRelations];
-      console.log("end")
-      console.log(annotationsOnPage)
-      console.log(linkedRelations)
+
     } catch (error) {
       console.error('Error fetching annotations from Firestore: ', error);
       return [];

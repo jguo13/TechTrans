@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "start": "webpack serve  --mode development --open",
-    "build": "webpack --config webpack.config.js"
+    "build": "webpack --config webpack.prod.js"
   },
   "repository": {
     "type": "git",
@@ -30,6 +30,7 @@
     "@babel/preset-env": "^7.22.15",
     "@babel/preset-react": "^7.22.15",
     "babel-loader": "^8.3.0",
+    "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^5.2.7",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^4.5.2",
@@ -43,6 +44,7 @@
     "@recogito/annotorious": "^2.7.8",
     "@recogito/recogito-connections": "^0.1.11",
     "@recogito/recogito-js": "^1.8.1",
+    "@recogito/recogito-react-pdf": "^0.8.8",
     "clean-webpack-plugin": "^4.0.0",
     "firebase": "^10.3.1",
     "mini-css-extract-plugin": "^2.7.6",

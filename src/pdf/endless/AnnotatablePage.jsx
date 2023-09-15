@@ -102,19 +102,22 @@ const AnnotatablePage = props => {
     }
   }
 
-  const initAnnotationLayer = () => {
+  const initAnnotationLayer = async () => {
     console.log('Creating annotation layer on page ' + props.page);
 
     const config = props.config || {};
+    const annotations = await props.store.getAnnotations(props.page);
+    const { text, image } = splitByType(annotations);
 
-    const { text, image } = splitByType(props.store.getAnnotations(props.page));
-
+    // const { text, image } = splitByType(props.store.getAnnotations(props.page));
+    const m4 = "1text st: " + text;
+    console.log(m4);
     const r = new Recogito({
       ...config,
       content: containerEl.current.querySelector('.textLayer'),
       mode: 'pre'
     });
-
+    r.setAnnotations(text);
     // Init Recogito Connections plugin
     props.connections.register(r);
 
@@ -126,6 +129,8 @@ const AnnotatablePage = props => {
     r.on('updateAnnotation', onUpdateAnnotation);
     r.on('deleteAnnotation', onDeleteAnnotation);
     r.on('cancelSelected', a => props.onCancelSelected(a));
+    const m3 = "text st: " + text;
+    console.log(m3);
     setRecogito(r);
 
 

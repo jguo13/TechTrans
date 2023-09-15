@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
-import { pdfjs, PDFViewer } from '../src';
+// import { pdfjs, PDFViewer } from '../src';
 import Todo from '../src/components/Todo';
 import { collection, addDoc, getDocs } from 'firebase/firestore';
 import { db } from '../src/services/firebase.config';
 import { auth } from "./services/firebase.config.js"; import { onAuthStateChanged } from 'firebase/auth';
+// import { pdfjs, PDFViewer } from '@recogito/recogito-react-pdf';
+import * as pdfjs from 'pdfjs-dist/legacy/build/pdf';
+import PDFViewer from './pdf/PDFViewer';
 
 pdfjs.GlobalWorkerOptions.workerSrc = 'pdf.worker.js';
 
@@ -36,9 +39,9 @@ const App = () => {
 
 
     // useEffect(() => {
-    //   fetch('sample-annotations.json')
-    //     .then(response => response.json())
-    //     .then(setAnnotations);
+    //     fetch('sample-annotations.json')
+    //         .then(response => response.json())
+    //         .then(setAnnotations);
     // }, []);
 
     useEffect(() => {
@@ -54,9 +57,9 @@ const App = () => {
                 });
 
                 // Set annotations in your component state
-                setAnnotations(annotations);
-                console.log("new update breg");
-                console.log(annotations)
+                setAnnotations;
+                const m1 = "new update breg: " + annotations;
+                console.log(m1);
             })
             .catch((error) => {
                 console.error('Error fetching annotations from Firestore: ', error);
@@ -99,7 +102,8 @@ const App = () => {
                 config={{
                     relationVocabulary: ['located_at', 'observed_at']
                 }}
-                url="compressed.tracemonkey-pldi-09.pdf"
+                // url="compressed.tracemonkey-pldi-09.pdf"
+                url="Bonterms-Professional-Services-Agreement-PSA-Version-1.2.pdf"
                 annotations={annotations}
                 onCreateAnnotation={a => console.log(JSON.stringify(a))}
                 onUpdateAnnotation={(a, b) => console.log(JSON.stringify(a, b))}

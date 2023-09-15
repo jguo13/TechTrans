@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
-import { pdfjs, PDFViewer } from '../src';
+// import { pdfjs, PDFViewer } from '../src';
 import Todo from '../src/components/Todo';
 import { collection, addDoc, getDocs } from 'firebase/firestore';
 import { db } from '../src/services/firebase.config';
 import { auth } from "../src/services/firebase.config.js";
 import { onAuthStateChanged } from 'firebase/auth';
 import App from '../src/App.js';
-
+import * as pdfjs from 'pdfjs-dist/legacy/build/pdf';
+import PDFViewer from '../src/pdf/PDFViewer';
 
 pdfjs.GlobalWorkerOptions.workerSrc = 'pdf.worker.js';
 
