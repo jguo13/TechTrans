@@ -12,7 +12,7 @@
       "selector": [
         {
           "type": "TextQuoteSelector",
-          "exact": "Type Specialization"
+          "exact": "The Agreement"
         },
         {
           "type": "TextPositionSelector",
@@ -38,12 +38,12 @@
       "selector": [
         {
           "type": "TextQuoteSelector",
-          "exact": "Abstract"
+          "exact": "accordance"
         },
         {
           "type": "TextPositionSelector",
-          "start": 598,
-          "end": 606,
+          "start": 1682,
+          "end": 1682,
           "page": 1
         }
       ]

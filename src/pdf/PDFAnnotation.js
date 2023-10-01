@@ -56,10 +56,11 @@ export const splitByType = async (annotations) => {
 
   if (annotations) {
     await annotations.forEach(a => {
+      console.log("this is the a value:: " + JSON.stringify(a, null, 2));
       if (a.target.selector) {
         const selectors = Array.isArray(a.target.selector) ?
           a.target.selector : [a.target.selector];
-
+        console.log("this is the a target selector2312:: " + JSON.stringify(a.target.selector, null, 2));
         const hasImageSelector =
           selectors.find(s => s.type === 'FragmentSelector' || s.type === 'SvgSelector');
 
@@ -73,5 +74,6 @@ export const splitByType = async (annotations) => {
       }
     });
   }
+  console.log("this is the final text return 45: " + JSON.stringify(text, null, 2))
   return { text, image };
 }

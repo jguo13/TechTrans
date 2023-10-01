@@ -90,7 +90,7 @@ export default class AnnotationStore {
   async getAnnotations(pageNumber) {
 
     try {
-
+      console.log("1234")
       // Reference to the "annotations" collection
       const annotationsCollection = await collection(db, 'annotations');
       console.log(pageNumber);
@@ -126,6 +126,11 @@ export default class AnnotationStore {
           return ids.has(from) || ids.has(to);
         });
       const m2 = "this is the annotationsOnPage: " + annotationsOnPage;
+      console.log(m2)
+
+
+      const concatenatedArray = [...annotationsOnPage, ...linkedRelations];
+      console.log('ca' + concatenatedArray);
       return [...annotationsOnPage, ...linkedRelations];
 
     } catch (error) {

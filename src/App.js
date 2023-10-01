@@ -38,11 +38,24 @@ const App = () => {
 
 
 
-    // useEffect(() => {
-    //     fetch('sample-annotations.json')
-    //         .then(response => response.json())
-    //         .then(setAnnotations);
-    // }, []);
+    useEffect(() => {
+        console.log("STartup")
+        fetch('sample-annotations.json')
+            .then(response => response.json())
+            // .then(setAnnotations);
+            .then(data => {
+                // Set the data to the state
+                setAnnotations(data);
+
+                // Now you can log it
+                console.log(data);
+
+                // If you want to create and log m2, you can do it here
+                const m1 = "test1";
+                const m2 = m1 + data;
+                console.log(m2);
+            })
+    }, []);
 
     useEffect(() => {
         // Reference to the "annotations" collection in Firestore

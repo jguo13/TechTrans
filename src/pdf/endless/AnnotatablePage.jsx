@@ -101,17 +101,20 @@ const AnnotatablePage = props => {
       }
     }
   }
-
   const initAnnotationLayer = async () => {
+    // const initAnnotationLayer = async () => {
     console.log('Creating annotation layer on page ' + props.page);
 
     const config = props.config || {};
-    const annotations = await props.store.getAnnotations(props.page);
-    const { text, image } = splitByType(annotations);
 
-    // const { text, image } = splitByType(props.store.getAnnotations(props.page));
-    const m4 = "1text st: " + text;
+    const annotations = await props.store.getAnnotations(props.page);
+
+    const m4 = "1text st props.page: " + annotations;
     console.log(m4);
+    const { text, image } = await splitByType(annotations);
+    console.log('text alone' + JSON.stringify(text, null, 2));
+    // const { text, image } = splitByType(props.store.getAnnotations(props.page));
+
     const r = new Recogito({
       ...config,
       content: containerEl.current.querySelector('.textLayer'),
