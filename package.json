@@ -1,0 +1,93 @@
+{
+  "name": "@recogito/recogito-react-pdf",
+  "version": "0.8.9",
+  "private": true,
+  "dependencies": {
+    "@hookform/resolvers": "^2.8.8",
+    "@recogito/annotorious": "^2.7.8",
+    "@recogito/recogito-connections": "^0.1.11",
+    "@recogito/recogito-js": "^1.8.1",
+    "@recogito/recogito-react-pdf": "^0.8.8",
+    "@testing-library/jest-dom": "^5.16.2",
+    "@testing-library/react": "^12.1.4",
+    "@testing-library/user-event": "^13.5.0",
+    "axios": "^0.26.1",
+    "clean-webpack-plugin": "^4.0.0",
+    "firebase": "^10.3.1",
+    "mini-css-extract-plugin": "^2.7.6",
+    "pdfjs-dist": "2.9.359",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-hook-form": "^7.28.0",
+    "react-icons": "^4.3.1",
+    "react-multi-carousel": "^2.8.0",
+    "react-router-dom": "5",
+    "react-scripts": "5.0.0",
+    "react-toastify": "^8.2.0",
+    "styled-components": "^5.3.3",
+    "sweetalert2": "^11.4.6",
+    "web-vitals": "^2.1.4",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^4.9.0",
+    "webpack-dev-server": "^4.3.1",
+    "yup": "^0.32.11"
+  },
+  "scripts": {
+    "start": "webpack serve  --mode development --open",
+    "build": "webpack --config webpack.prod.js",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "description": "A React component for annotating PDF, powered by PDF.js and RecogitoJS",
+  "main": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/recogito/recogito-react-pdf.git"
+  },
+  "keywords": [
+    "Annotation",
+    "PDF",
+    "RecogitoJS"
+  ],
+  "author": "Rainer Simon",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/recogito/recogito-react-pdf/issues"
+  },
+  "homepage": "https://github.com/recogito/recogito-react-pdf#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.8.0",
+    "@babel/core": "^7.22.15",
+    "@babel/plugin-proposal-class-properties": "^7.8.0",
+    "@babel/plugin-transform-runtime": "^7.9.0",
+    "@babel/preset-env": "^7.22.15",
+    "@babel/preset-react": "^7.22.15",
+    "babel-loader": "^8.3.0",
+    "copy-webpack-plugin": "^11.0.0",
+    "css-loader": "^5.2.7",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^4.5.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "sass": "^1.35.2",
+    "sass-loader": "^10.2.0",
+    "style-loader": "^2.0.0"
+  }
+}
