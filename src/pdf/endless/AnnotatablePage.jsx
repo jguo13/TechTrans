@@ -5,7 +5,8 @@ import { Annotorious } from '@recogito/annotorious/src';
 import { onAuthStateChanged } from 'firebase/auth';
 import { extendTarget, splitByType } from '../PDFAnnotation';
 import { auth } from "../../services/firebase.config.js";
-import { userEmail } from "../../App.js"
+import { userEmail } from "../../pages/Contract/App.js"
+
 import { useAuthState } from 'react-firebase-hooks/auth';
 
 

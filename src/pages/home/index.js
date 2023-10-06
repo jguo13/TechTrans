@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-
+import { Link } from "react-router-dom";
 import * as S from "./styles";
 
 import Header from "../../components/Header";
@@ -24,7 +24,7 @@ const responsive = {
     slidesToSlide: 1,
   },
 };
-
+console.log("homeeee");
 const Home = () => {
 
   const [menuIsVisible, setMenuIsVisible] = useState(false);
@@ -32,7 +32,7 @@ const Home = () => {
   return (
     <>
 
-      <Header  />
+      <Header />
 
       <S.Main>
         <S.LeftHomeInfo>
@@ -51,9 +51,9 @@ const Home = () => {
           </S.LeftDivInputHome>
         </S.LeftHomeInfo>
         <S.ImageHome
-            src="./assets/img/Illustration.svg"
-            alt="The image has two people holding a strawberry, one person with a magnifying glass sitting on the end of a giant banana lying behind. She has giant fruits and a scale that represents the nutritional values ​​of a giant apple."
-          />
+          src="./assets/img/Illustration.svg"
+          alt="The image has two people holding a strawberry, one person with a magnifying glass sitting on the end of a giant banana lying behind. She has giant fruits and a scale that represents the nutritional values ​​of a giant apple."
+        />
 
       </S.Main>
 
@@ -270,7 +270,9 @@ const Home = () => {
           />
         </div>
       </S.SectionMembership>
-
+      <Link to="/Contract">
+        <S.ButtonToContracts>Go to Contracts</S.ButtonToContracts>
+      </Link>
       <S.Footer>
         <S.FooterCopyright>
           © Copyrights 2019 Stack. All Rights Reserved
@@ -280,6 +282,7 @@ const Home = () => {
           <S.FooterLegalDocument href="https://www.linkedin.com/in/kayke-fujinaka/">Terms and Conditions</S.FooterLegalDocument>
         </div>
       </S.Footer>
+
     </>
   );
 };

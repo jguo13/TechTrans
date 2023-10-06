@@ -1,50 +1,5 @@
-// import React from 'react';
-// import ReactDOM from 'react-dom';
-// import * as pdfjs from 'pdfjs-dist/legacy/build/pdf';
-// import PDFViewer from '../../pdf/PDFViewer';
-// import * as S from "./styles";
-// // pdfjs.GlobalWorkerOptions.workerSrc = 'pdf.worker.js';
-
-// // function Contract() {
-// //     return (
-// //         <div><h1>hi</h1>
-// //             {/* Your Contract page content here */}
-// //             <PDFViewer />
-// //         </div>
-// //     );
-// // }
-
-// // export { pdfjs, PDFViewer, Contract };
-
-
-// function Contract() {
-//     return (
-//         <>
-//             <S.ContainerMain>
-//                 <S.Img
-//                     src="./assets/img/illustration_error.svg"
-//                     alt="Image of Error 404"
-//                 />
-//                 <p id="paragraphInfo">HIHI This is not the web page you are looking for</p>
-
-//                 <p>The link may not be working or the Page may have been removed. Check that the link you are trying to open is correct.</p>
-
-//                 <S.DivBackToHome>
-//                     <S.LinkToHome to="/">
-//                         Back to <span>Login</span>
-//                     </S.LinkToHome>
-//                 </S.DivBackToHome>
-//             </S.ContainerMain>
-
-//         </>
-//     );
-// }
-// export default Contract
-
-
-
 import React, { useEffect, useState } from 'react';
-
+import ReactDOM from 'react-dom';
 // import { pdfjs, PDFViewer } from '../src';
 
 import { collection, addDoc, getDocs } from 'firebase/firestore';
@@ -56,7 +11,7 @@ import PDFViewer from '../../pdf/PDFViewer';
 
 pdfjs.GlobalWorkerOptions.workerSrc = 'pdf.worker.js';
 
-const Contract = () => {
+const App = () => {
     console.log("jerrrrrrrrrrr");
     const [annotations, setAnnotations] = useState();
     const [userEmail, setUserEmail] = useState();
@@ -173,4 +128,4 @@ const Contract = () => {
 }
 
 export const userEmail = userEmail;
-export default Contract;
+export default App;

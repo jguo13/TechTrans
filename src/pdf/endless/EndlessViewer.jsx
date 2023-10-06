@@ -7,7 +7,7 @@ import Layout from "../../Layout";
 import Login from "../../Login";
 import Signup from "../../Signup";
 import Profile from "../../Profile";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+// import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 
 const Range = maxValue =>
@@ -36,7 +36,7 @@ const EndlessViewer = props => {
   return (
 
     <div>
-      <BrowserRouter>
+      {/* <BrowserRouter>
         <header>
           <div className="login">
             <span className="inner">
@@ -73,7 +73,7 @@ const EndlessViewer = props => {
             </span>
           </button>
         </header>
-      </BrowserRouter>
+      </BrowserRouter> */}
       <main>
         <div className="pdf-viewer-container">
           {Range(props.pdf.numPages).map(idx =>

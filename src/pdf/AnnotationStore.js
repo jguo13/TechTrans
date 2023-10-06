@@ -1,6 +1,6 @@
 import { collection, addDoc, setDoc, query, where, getDocs, updateDoc, deleteDoc, doc } from 'firebase/firestore'; // Import Firestore methods
 import { db } from '../services/firebase.config';
-import { userEmail } from "../App.js"
+import { userEmail } from "../pages/Contract/App.js"
 import { auth } from "../services/firebase.config.js";
 /** A minimal local annotation store **/
 export default class AnnotationStore {
