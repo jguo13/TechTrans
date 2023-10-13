@@ -37,11 +37,11 @@ const Home = () => {
       <S.Main>
         <S.LeftHomeInfo>
           <S.LeftHomeParagraph>
-            Ready for
+            Ready to
             <br />
-            Trying a new
+            explore some
             <br />
-            recipe?
+            contracts?
           </S.LeftHomeParagraph>
           <S.LeftDivInputHome>
             <S.Input placeholder="Search healthy recipes" />
@@ -51,7 +51,7 @@ const Home = () => {
           </S.LeftDivInputHome>
         </S.LeftHomeInfo>
         <S.ImageHome
-          src="./assets/img/Illustration.svg"
+          src="./assets/img/home_img.jpg"
           alt="The image has two people holding a strawberry, one person with a magnifying glass sitting on the end of a giant banana lying behind. She has giant fruits and a scale that represents the nutritional values ​​of a giant apple."
         />
 
@@ -59,66 +59,74 @@ const Home = () => {
 
       <S.SectionRecipes id="recipes">
         <S.HeaderSections>
-          <S.TitleSections>Our Best Recipes</S.TitleSections>
+          <S.TitleSections>Annotated Contracts</S.TitleSections>
           <S.ParagrafoSections>
-            Far far away, behind the word mountains, far from the countries
+            Click to see annotations of popular contracts.
           </S.ParagrafoSections>
           <S.ParagrafoSections>
-            Vokalia and Consonantia, there live the blind texts.
+            Contribute your own thoughts as well!
           </S.ParagrafoSections>
           <S.DivCardRecipes>
             <S.CardsRecipes>
-              <img
-                src="./assets/img/comida_1.svg"
+              {/* <img
+                src="./assets/img/psa_img.jpg"
                 alt="Image of a plate with Broccoli Salad with Bacon"
-              />
+              /> */}
               <S.CardsInfoRecipes>
                 <S.ParagraphCardRecipes>
-                  Broccoli Salad with Bacon
+                  Professional Services Agreement
                 </S.ParagraphCardRecipes>
-                <S.LinkCardRecipes href="#">See Recipe</S.LinkCardRecipes>
+                <Link to="/Contract">
+                  <S.ButtonToContracts>Go to Contract</S.ButtonToContracts>
+                </Link>
               </S.CardsInfoRecipes>
             </S.CardsRecipes>
             <S.CardsRecipes>
-              <img
+              {/* <img
                 src="./assets/img/comida_2.svg"
                 alt="Images of Classic Beef Burgers"
-              />
+              /> */}
               <S.CardsInfoRecipes>
                 <S.ParagraphCardRecipes>
-                  Classic Beef Burgers
+                  Cloud Terms
                 </S.ParagraphCardRecipes>
-                <S.LinkCardRecipes href="#">See Recipe</S.LinkCardRecipes>
+                <Link to="/Contract">
+                  <S.ButtonToContracts>Go to Contract</S.ButtonToContracts>
+                </Link>
               </S.CardsInfoRecipes>
             </S.CardsRecipes>
             <S.CardsRecipes>
-              <img
+              {/* <img
                 src="./assets/img/comida_3.svg"
                 alt="Image of Classic Potato Salad"
-              />
+              /> */}
               <S.CardsInfoRecipes>
                 <S.ParagraphCardRecipes>
-                  Classic Potato Salad
+                  AI Standard Clauses
                 </S.ParagraphCardRecipes>
-                <S.LinkCardRecipes href="#">See Recipe</S.LinkCardRecipes>
+                <Link to="/Contract">
+                  <S.ButtonToContracts>Go to Contract</S.ButtonToContracts>
+                </Link>
               </S.CardsInfoRecipes>
             </S.CardsRecipes>
             <S.CardsRecipes>
-              <img
+              {/* <img
                 src="./assets/img/comida_4.svg"
                 alt="Image of Cherry Cobbler on the Grill"
-              />
+              /> */}
               <S.CardsInfoRecipes>
                 <S.ParagraphCardRecipes>
-                  Cherry Cobbler on the Grill
+                  Service Level Agreement
                 </S.ParagraphCardRecipes>
-                <S.LinkCardRecipes href="#">See Recipe</S.LinkCardRecipes>
+                <Link to="/Contract">
+                  <S.ButtonToContracts>Go to Contract</S.ButtonToContracts>
+                </Link>
               </S.CardsInfoRecipes>
             </S.CardsRecipes>
           </S.DivCardRecipes>
         </S.HeaderSections>
       </S.SectionRecipes>
-
+      {/* 
       <S.SectionServices>
         <S.ImageServices
           src="./assets/img/bloco_services.svg"
@@ -144,9 +152,9 @@ const Home = () => {
             <S.KnowMoreServices href="#">Know More</S.KnowMoreServices>
           </S.ArticleServices>
         </div>
-      </S.SectionServices>
+      </S.SectionServices> */}
 
-      <S.SectionBlog id="blog">
+      {/* <S.SectionBlog id="blog">
         <S.HeaderSections>
           <S.TitleSections>Read Our Blog</S.TitleSections>
           <S.ParagrafoSections>
@@ -272,7 +280,7 @@ const Home = () => {
       </S.SectionMembership>
       <Link to="/Contract">
         <S.ButtonToContracts>Go to Contracts</S.ButtonToContracts>
-      </Link>
+      </Link> */}
       <S.Footer>
         <S.FooterCopyright>
           © Copyrights 2019 Stack. All Rights Reserved

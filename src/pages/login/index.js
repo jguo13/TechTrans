@@ -129,7 +129,7 @@ function Join() {
   return (
     <>
       <S.Container>
-        <S.Img src="./assets/img/illustration_login.svg" />
+        <S.Img src="./assets/img/homepage_logo.jpg" />
         <p>Join</p>
 
         <label>

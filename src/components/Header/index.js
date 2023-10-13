@@ -217,11 +217,13 @@ export function Header({ setMenuIsVisible }) {
     <>
       {header === true ? (
         <Container>
-          <h1>Healthy Food</h1>
+
+
+          <h1><a href="/">Technology Transactions</a></h1>
           <div>
             <ul>
-              <a href="#recipes"><li>HEALTHY RECIPES</li></a>
-              <a href="#blog"><li>BLOG</li></a>
+              <a href="#recipes"><li>Explore</li></a>
+              <a href="#blog"><li>Top Hits</li></a>
               <ProfileHeader onClick={navigateProfile}>{nome}</ProfileHeader>
             </ul>
             <LogoutHeader onClick={logout}><MdOutlineLogout /></LogoutHeader>

@@ -161,7 +161,7 @@ export const ButtonSearchHome = styled.button`
 export const ImageHome = styled.img`
   width: 50%;
   position: absolute;
-  top: 0;
+  top: 100px;
   right: 0; 
   @media (max-width: 450px) {
     width: 60%;
@@ -200,6 +200,7 @@ export const CardsRecipes = styled.div`
   }
   img {
     cursor: pointer;
+
   }
   @media (max-width: 850px) {
     text-align: center;
@@ -226,7 +227,7 @@ export const CardsInfoRecipes = styled.div`
 `;
 
 export const ParagraphCardRecipes = styled.p`
-  text-align: left;
+  text-align: center;
   margin-bottom: 20px;
   font-weight: 700;
   font-size: 1.5rem;

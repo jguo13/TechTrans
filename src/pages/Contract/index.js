@@ -1,48 +1,3 @@
-// import React from 'react';
-// import ReactDOM from 'react-dom';
-// import * as pdfjs from 'pdfjs-dist/legacy/build/pdf';
-// import PDFViewer from '../../pdf/PDFViewer';
-// import * as S from "./styles";
-// // pdfjs.GlobalWorkerOptions.workerSrc = 'pdf.worker.js';
-
-// // function Contract() {
-// //     return (
-// //         <div><h1>hi</h1>
-// //             {/* Your Contract page content here */}
-// //             <PDFViewer />
-// //         </div>
-// //     );
-// // }
-
-// // export { pdfjs, PDFViewer, Contract };
-
-
-// function Contract() {
-//     return (
-//         <>
-//             <S.ContainerMain>
-//                 <S.Img
-//                     src="./assets/img/illustration_error.svg"
-//                     alt="Image of Error 404"
-//                 />
-//                 <p id="paragraphInfo">HIHI This is not the web page you are looking for</p>
-
-//                 <p>The link may not be working or the Page may have been removed. Check that the link you are trying to open is correct.</p>
-
-//                 <S.DivBackToHome>
-//                     <S.LinkToHome to="/">
-//                         Back to <span>Login</span>
-//                     </S.LinkToHome>
-//                 </S.DivBackToHome>
-//             </S.ContainerMain>
-
-//         </>
-//     );
-// }
-// export default Contract
-
-
-
 import React, { useEffect, useState } from 'react';
 
 // import { pdfjs, PDFViewer } from '../src';
@@ -53,6 +8,7 @@ import { onAuthStateChanged } from 'firebase/auth';
 // import { pdfjs, PDFViewer } from '@recogito/recogito-react-pdf';
 import * as pdfjs from 'pdfjs-dist/legacy/build/pdf';
 import PDFViewer from '../../pdf/PDFViewer';
+import Header from "../../components/Header";
 
 pdfjs.GlobalWorkerOptions.workerSrc = 'pdf.worker.js';
 
@@ -81,27 +37,6 @@ const Contract = () => {
         return () => unsubscribe();
     }, [auth]);
 
-
-
-    // useEffect(() => {
-    //     console.log("STartup")
-    //     fetch('sample-annotations.json')
-    //         .then(response => response.json())
-    //         // .then(setAnnotations);
-    //         .then(data => {
-    //             // Set the data to the state
-    //             setAnnotations(data);
-
-    //             // Now you can log it
-    //             console.log(data);
-
-    //             // If you want to create and log m2, you can do it here
-    //             const m1 = "test1";
-    //             const m2 = m1 + data;
-    //             console.log(m2);
-    //         })
-    // }, []);
-
     useEffect(() => {
         // Reference to the "annotations" collection in Firestore
         const annotationsCollection = collection(db, 'annotations');
@@ -123,38 +58,12 @@ const Contract = () => {
                 console.error('Error fetching annotations from Firestore: ', error);
             });
     }, []);
-    // ...
-
-    // useEffect(() => {
-    //   fetch('sample-annotations.json')
-    //     .then(response => response.json())
-    //     .then((responseJson) => {
-    //       console.log(responseJson);
-
-    //       // Assuming you have a Firestore collection named 'annotations'
-    //       const annotationsCollection = collection(db, 'annotations');
-
-    //       // Iterate through the responseJson and add each item to the Firestore collection
-    //       responseJson.forEach((data) => {
-    //         console.log("Hello, world"); // Added console.log here
-    //         addDoc(annotationsCollection, data) // Use addDoc on the collection reference
-    //           .then((docRef) => {
-    //             console.log('Document added with ID: ', docRef.id);
-    //           })
-    //           .catch((error) => {
-    //             console.error('Error adding document: ', error);
-    //           });
-    //       });
-    //     })
-    //     .catch(error => {
-    //       console.error('Error fetching data:', error);
-    //     });
-    // }, []);
 
 
 
     return (
         <>
+            <Header />
             <PDFViewer
                 mode="scrolling"
                 config={{
