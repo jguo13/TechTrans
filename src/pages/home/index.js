@@ -282,12 +282,9 @@ const Home = () => {
         <S.ButtonToContracts>Go to Contracts</S.ButtonToContracts>
       </Link> */}
       <S.Footer>
-        <S.FooterCopyright>
-          © Copyrights 2019 Stack. All Rights Reserved
-        </S.FooterCopyright>
         <div>
-          <S.FooterLegalDocument href="https://www.linkedin.com/in/kayke-fujinaka/">Privacy Policy</S.FooterLegalDocument>
-          <S.FooterLegalDocument href="https://www.linkedin.com/in/kayke-fujinaka/">Terms and Conditions</S.FooterLegalDocument>
+          <S.FooterLegalDocument href="#">Privacy Policy</S.FooterLegalDocument>
+          <S.FooterLegalDocument href="#">Terms and Conditions</S.FooterLegalDocument>
         </div>
       </S.Footer>
 
