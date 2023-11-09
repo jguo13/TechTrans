@@ -95,10 +95,10 @@ const AnnotatablePage = props => {
 
         recogito.setMode('ANNOTATION');
       } else if (props.annotationMode === 'RELATIONS') {
-        if (imageLayer)
-          imageLayer.style.pointerEvents = null;
+        // if (imageLayer)
+        //   imageLayer.style.pointerEvents = null;
 
-        recogito.setMode('RELATIONS');
+        // recogito.setMode('RELATIONS');
       }
     }
   }
@@ -123,7 +123,7 @@ const AnnotatablePage = props => {
     });
     r.setAnnotations(text);
     // Init Recogito Connections plugin
-    props.connections.register(r);
+    // props.connections.register(r);
 
     props.connections.on('createConnection', onCreateAnnotation);
     props.connections.on('updateConnection', onUpdateAnnotation);
@@ -192,12 +192,12 @@ const AnnotatablePage = props => {
       console.log('Destroying annotation layer on page ' + props.page);
 
     if (recogito) {
-      props.connections.unregister(recogito);
-      recogito.destroy();
+      // props.connections.unregister(recogito);
+      // recogito.destroy();
     }
 
     if (anno) {
-      anno.destroy();
+      // anno.destroy();
     }
   }
 

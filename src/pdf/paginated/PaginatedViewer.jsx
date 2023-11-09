@@ -33,11 +33,11 @@ const PaginatedViewer = props => {
       props.pdf.getPage(nextNum).then(page => setPage(page));
   }
 
-  const onToggleRelationsMode = () => {
-    if (annotationMode === 'RELATIONS')
+  const onToggleMode = () => {
+    if (annotationMode === '')
       setAnnotationMode('ANNOTATION');
     else
-      setAnnotationMode('RELATIONS');
+      setAnnotationMode('');
   }
 
   const onToggleImageMode = () => {
@@ -87,8 +87,8 @@ const PaginatedViewer = props => {
         </button>
 
         <button
-          className={annotationMode === 'RELATIONS' ? 'active' : null}
-          onClick={onToggleRelationsMode}>
+          className={annotationMode === '' ? 'active' : null}
+          onClick={onToggleMode}>
           <span className="inner">
             <CgArrowsExpandDownRight />
           </span>
