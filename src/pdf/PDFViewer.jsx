@@ -7,7 +7,7 @@ import PaginatedViewer from './paginated/PaginatedViewer';
 import Store from './AnnotationStore';
 
 import 'pdfjs-dist/web/pdf_viewer.css';
-import '@recogito/recogito-js/dist/recogito.min.css';
+import '../../recogito-js/dist/recogito.min.css';
 import '@recogito/annotorious/dist/annotorious.min.css';
 import './PDFViewer.css';
 
@@ -15,14 +15,14 @@ const store = new Store();
 
 const PDFViewer = props => {
 
-  const [ pdf, setPdf ] = useState();
+  const [pdf, setPdf] = useState();
 
-  const [ connections, setConnections ] = useState();
+  const [connections, setConnections] = useState();
 
   // Load PDF on mount
   useEffect(() => {
     // Init after DOM load
-    const conn = new Connections([], { 
+    const conn = new Connections([], {
       showLabels: true,
       vocabulary: props.config.relationVocabulary
     });
@@ -31,7 +31,7 @@ const PDFViewer = props => {
 
     PDFJS.getDocument(props.url).promise
       .then(
-        pdf => setPdf(pdf), 
+        pdf => setPdf(pdf),
         error => console.error(error)
       );
 
@@ -41,7 +41,7 @@ const PDFViewer = props => {
 
   useEffect(() => {
     store.setAnnotations(props.annotations || []);
-  }, [ props.annotations ])
+  }, [props.annotations])
 
   const onCreateAnnotation = a => {
     store.createAnnotation(a);
@@ -52,7 +52,7 @@ const PDFViewer = props => {
     store.updateAnnotation(a, p);
     props.onUpdateAnnotation && props.onUpdateAnnotation(a, p);
   }
-    
+
   const onDeleteAnnotation = a => {
     store.deleteAnnotation(a);
     props.onDeleteAnnotation && props.onDeleteAnnotation(a);
@@ -62,8 +62,8 @@ const PDFViewer = props => {
     props.onCancelSelected && props.onCancelSelected(a);
   }
 
-  return pdf ? 
-    props.mode === 'scrolling' ? 
+  return pdf ?
+    props.mode === 'scrolling' ?
       <EndlessViewer
         {...props}
         pdf={pdf}
@@ -71,19 +71,19 @@ const PDFViewer = props => {
         connections={connections}
         onCreateAnnotation={onCreateAnnotation}
         onUpdateAnnotation={onUpdateAnnotation}
-        onDeleteAnnotation={onDeleteAnnotation} 
+        onDeleteAnnotation={onDeleteAnnotation}
         onCancelSelected={onCancelSelected} /> :
-      
-      <PaginatedViewer 
+
+      <PaginatedViewer
         {...props}
         pdf={pdf}
         store={store}
         connections={connections}
         onCreateAnnotation={onCreateAnnotation}
         onUpdateAnnotation={onUpdateAnnotation}
-        onDeleteAnnotation={onDeleteAnnotation} 
+        onDeleteAnnotation={onDeleteAnnotation}
         onCancelSelected={onCancelSelected} />
-    
+
     : null;
 
 }

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as PDFJS from 'pdfjs-dist/legacy/build/pdf';
-import { Recogito } from '@recogito/recogito-js/src';
+import { Recogito } from '../../../recogito-js/src';
 import { Annotorious } from '@recogito/annotorious/src';
 
 import { splitByType } from '../PDFAnnotation';
