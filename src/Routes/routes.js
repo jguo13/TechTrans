@@ -50,6 +50,7 @@ function AppRoutes() {
                 <Route path="/Home" element={<Home />} />
                 <Route path="/Profile" element={<Profile />} />
                 <Route path="/Contract" element={<Contract />} />
+                <Route path="/psa-html.html" element="https://ocf.io/mdcha/techtrans/psa.html"/>
                 <Route path="*" element={<Error />} />
 
             </Routes>
